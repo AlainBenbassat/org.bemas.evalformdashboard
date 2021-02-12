@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/evalform-dashboard-event</path>
+    <page_callback>CRM_Evalformdashboard_Page_Event</page_callback>
+    <title>Event</title>
+    <access_arguments>access CiviCRM</access_arguments>
+  </item>
+</menu>
