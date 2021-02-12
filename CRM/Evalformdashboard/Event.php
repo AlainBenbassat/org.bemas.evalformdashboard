@@ -25,6 +25,9 @@ class CRM_Evalformdashboard_Event {
 
     $event->themes = self::getThemes($event->theme_ids);
     $event->language = self::getLanguage($event->title);
+    $event->num_participants = self::getNumParticipants($eventId);
+    $event->num_evaluations = self::getNumEvaluations($eventId);
+    $event->response_rate = self::calcResponseRate($event->num_participants, $event->num_evaluations);
 
     return $event;
   }
@@ -70,4 +73,26 @@ class CRM_Evalformdashboard_Event {
 
     return $language;
   }
+
+  private static function getNumParticipants($eventId) {
+    $sql = "select count(*) from civicrm_participant where event_id = $eventId and status_id in (1, 2, 16) and role_id = '1'";
+    return CRM_Core_DAO::singleValueQuery($sql);
+  }
+
+  private static function getNumEvaluations($eventId) {
+    $sql = "select count(*) from civicrm_bemas_eval_participant_event where event_id = $eventId";
+    return CRM_Core_DAO::singleValueQuery($sql);
+  }
+
+  private static function calcResponseRate($numParticipants, $numEvaluations) {
+    if ($numParticipants > 0) {
+      $responseRate = round($numEvaluations / $numParticipants * 100) . '%';
+    }
+    else {
+      $responseRate = '';
+    }
+
+    return $responseRate;
+  }
+
 }

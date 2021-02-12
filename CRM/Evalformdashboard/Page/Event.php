@@ -10,12 +10,17 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
       $eventId = $this->getQueryStringParameter('event_id', 'Integer');
       $event = CRM_Evalformdashboard_Event::get($eventId);
       $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($eventId);
+      $participantTrainerEval = CRM_Evalformdashboard_Participant::getTrainerEval($eventId);
+      $trainerEventEval = CRM_Evalformdashboard_Trainer::getEventEval($eventId);
 
       $this->assign('eventTitle', $event->title);
       $this->assign('eventStartDate', $event->start_date);
       $this->assign('eventLanguage', $event->language);
       $this->assign('eventNumDays', $event->num_days);
       $this->assign('eventThemes', $event->themes);
+      $this->assign('eventNumParticipants', $event->num_participants);
+      $this->assign('eventNumEvaluations', $event->num_evaluations);
+      $this->assign('eventNumResponseRate', $event->response_rate);
 
       if ($participantEventEval !== FALSE) {
         $this->assign('partEventEvalAlgemeneTevredenheid', $participantEventEval->algemene_tevredenheid);
@@ -31,6 +36,9 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
         $this->assign('partEventEvalCatering', $participantEventEval->catering);
         $this->assign('partEventEvalLocatie', $participantEventEval->locatie);
       }
+
+      $this->assign('partTrainerEval', $participantTrainerEval);
+      $this->assign('trainerEventEval', $trainerEventEval);
     }
     catch (Exception $e) {
       CRM_Core_Session::setStatus($e->getMessage(), '', 'no-popup');

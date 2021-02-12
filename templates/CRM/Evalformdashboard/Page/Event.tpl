@@ -1,4 +1,4 @@
-<h3>{ts}1. Evenement details{/ts}</h3>
+<h3>1. Evenement details</h3>
 <table id="options" class="display">
   <tr>
     <td>Titel</td>
@@ -20,9 +20,22 @@
     <td>Thema's</td>
     <td>{$eventThemes}</td>
   </tr>
+  <tr>
+    <td>Aantal deelnemers</td>
+    <td>{$eventNumParticipants}</td>
+  </tr>
+  <tr>
+    <td>Aantal evaluaties</td>
+    <td>{$eventNumEvaluations}</td>
+  </tr>
+  <tr>
+    <td>Response rate</td>
+    <td>{$eventNumResponseRate}</td>
+  </tr>
+
 </table>
 
-<h3>{ts}2. Deelnemers: evaluatie evenement{/ts}</h3>
+<h3>2. Deelnemers: evaluatie evenement</h3>
 <table id="options" class="display">
   <thead>
   <tr>
@@ -56,7 +69,7 @@
   </tr>
 </table>
 
-<h3>{ts}3. Deelnemers: evaluatie lesgever(s){/ts}</h3>
+<h3>3. Deelnemers: evaluatie lesgever(s)</h3>
 <table id="options" class="display">
   <thead>
     <tr>
@@ -65,12 +78,20 @@
       <th>Didactische vaardigheden</th>
     </tr>
   </thead>
+  {foreach from=$partTrainerEval item=row}
+    <tr class="crm-entity">
+      <td>{$row.trainer_name}</td>
+      <td>{$row.expertise}</td>
+      <td>{$row.didactische_vaardigheden}</td>
+    </tr>
+  {/foreach}
 </table>
 
-<h3>{ts}4. Lesgever(s): evaluatie evenement{/ts}</h3>
+<h3>4. Lesgever(s): evaluatie evenement</h3>
 <table id="options" class="display">
   <thead>
     <tr>
+      <th>Algemene tevredenheid</th>
       <th>Ontvangst</th>
       <th>Catering</th>
       <th>Locatie</th>
@@ -79,5 +100,15 @@
       <th>Verwachting</th>
     </tr>
   </thead>
-
+  {foreach from=$trainerEventEval item=row}
+    <tr class="crm-entity">
+      <td>{$row.algemene_tevredenheid}</td>
+      <td>{$row.ontvangst}</td>
+      <td>{$row.catering}</td>
+      <td>{$row.locatie}</td>
+      <td>{$row.cursusmateriaal}</td>
+      <td>{$row.interactie}</td>
+      <td>{$row.verwachting}</td>
+    </tr>
+  {/foreach}
 </table>
