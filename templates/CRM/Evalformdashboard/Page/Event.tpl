@@ -32,7 +32,10 @@
     <td>Response rate</td>
     <td>{$eventNumResponseRate}</td>
   </tr>
-
+  <tr>
+    <td>Link naar antwoorden</td>
+    <td>{$eventResponseLink}</td>
+  </tr>
 </table>
 
 <h3>2. Deelnemers: evaluatie evenement</h3>

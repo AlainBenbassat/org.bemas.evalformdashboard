@@ -28,6 +28,8 @@ class CRM_Evalformdashboard_Event {
     $event->num_participants = self::getNumParticipants($eventId);
     $event->num_evaluations = self::getNumEvaluations($eventId);
     $event->response_rate = self::calcResponseRate($event->num_participants, $event->num_evaluations);
+    $event->num_evaluations = self::getNumEvaluations($eventId);
+    $event->response_link = self::getResponseLink($eventId);
 
     return $event;
   }
@@ -93,6 +95,19 @@ class CRM_Evalformdashboard_Event {
     }
 
     return $responseRate;
+  }
+
+  private static function getResponseLink($eventId) {
+    $link = '';
+
+    $sql = "select ifnull(max(nid), 0) from civicrm_bemas_eval_participant_event where event_id = $eventId";
+    $nid = CRM_Core_DAO::singleValueQuery($sql);
+    if ($nid) {
+      $link = CRM_Utils_System::baseURL() . "node/$nid/webform-results/table";
+      $link = '<a href="' . $link . '">' . $link . '</a>';
+    }
+
+    return $link;
   }
 
 }

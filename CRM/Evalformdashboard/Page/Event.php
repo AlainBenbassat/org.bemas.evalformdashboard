@@ -21,6 +21,7 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
       $this->assign('eventNumParticipants', $event->num_participants);
       $this->assign('eventNumEvaluations', $event->num_evaluations);
       $this->assign('eventNumResponseRate', $event->response_rate);
+      $this->assign('eventResponseLink', $event->response_link);
 
       if ($participantEventEval !== FALSE) {
         $this->assign('partEventEvalAlgemeneTevredenheid', $participantEventEval->algemene_tevredenheid);
