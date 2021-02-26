@@ -76,12 +76,12 @@ class CRM_Evalformdashboard_Event {
     return $language;
   }
 
-  private static function getNumParticipants($eventId) {
+  public static function getNumParticipants($eventId) {
     $sql = "select count(*) from civicrm_participant where event_id = $eventId and status_id in (1, 2, 16) and role_id = '1'";
     return CRM_Core_DAO::singleValueQuery($sql);
   }
 
-  private static function getNumEvaluations($eventId) {
+  public static function getNumEvaluations($eventId) {
     $sql = "select count(*) from civicrm_bemas_eval_participant_event where event_id = $eventId";
     return CRM_Core_DAO::singleValueQuery($sql);
   }
