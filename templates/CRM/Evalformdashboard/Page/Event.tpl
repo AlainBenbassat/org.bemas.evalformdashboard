@@ -33,8 +33,12 @@
     <td>{$eventNumResponseRate}</td>
   </tr>
   <tr>
-    <td>Link naar antwoorden</td>
-    <td>{$eventResponseLink}</td>
+    <td>Link naar antwoorden deelnemers</td>
+    <td>{$eventParticipantResponseLink}</td>
+  </tr>
+  <tr>
+    <td>Link naar antwoorden lesgevers</td>
+    <td>{$eventTrainerResponseLink}</td>
   </tr>
 </table>
 
