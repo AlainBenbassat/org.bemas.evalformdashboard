@@ -148,7 +148,12 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
         'operatorType' => CRM_Report_Form::OP_MULTISELECT,
         'options' => CRM_Event_PseudoConstant::eventType(),
       ],
-
+      'is_active' => [
+        'dbAlias' => 'e.is_active',
+        'title' => E::ts('Active?'),
+        'type' => CRM_Utils_Type::T_BOOLEAN,
+        'default' => ['value' => 1],
+      ]
     ];
 
     return $filters;
