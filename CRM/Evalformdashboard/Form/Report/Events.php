@@ -66,6 +66,61 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
         'required' => TRUE,
         'dbAlias' => 'round(sum(epe.algemene_tevredenheid) / count(epe.algemene_tevredenheid))',
       ],
+      'invulling' => [
+        'title' => 'Invulling',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'cursusmateriaal' => [
+        'title' => 'Cursusmateriaal',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'interactie' => [
+        'title' => 'Interactie',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'kwaliteit' => [
+        'title' => 'Kwaliteit',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'bijgeleerd' => [
+        'title' => 'Bijgeleerd',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'verwachting' => [
+        'title' => 'Verwachting',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'relevantie' => [
+        'title' => 'Relevantie',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'administratief_proces' => [
+        'title' => 'Administratief proces',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'ontvangst' => [
+        'title' => 'Ontvangst',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'catering' => [
+        'title' => 'Catering',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
+      'locatie' => [
+        'title' => 'Locatie',
+        'required' => FALSE,
+        'dbAlias' => 'NULL',
+      ],
     ];
 
     return $fields;
@@ -143,7 +198,13 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
   }
 
   public function alterDisplay(&$rows) {
+    $optionalColumns = [
+      'invulling', 'cursusmateriaal', 'interactie', 'kwaliteit', 'bijgeleerd', 'verwachting', 'relevantie', 'administratief_proces', 'ontvangst', 'catering', 'locatie'
+    ];
+
     foreach ($rows as $rowNum => $row) {
+      $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($row['event_eval_dashboard_event_id']);
+
       if ($row['event_eval_dashboard_algemene_tevredenheid']) {
         $rows[$rowNum]['event_eval_dashboard_algemene_tevredenheid'] = $this->getUrlToEvaluationDetails($row['event_eval_dashboard_algemene_tevredenheid'], $row['event_eval_dashboard_event_id']);
       }
@@ -151,6 +212,12 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
       $rows[$rowNum]['event_eval_dashboard_num_participants'] = CRM_Evalformdashboard_Event::getNumParticipants($row['event_eval_dashboard_event_id']);
       $rows[$rowNum]['event_eval_dashboard_num_evaluations'] = CRM_Evalformdashboard_Event::getNumEvaluations($row['event_eval_dashboard_event_id']);
       $rows[$rowNum]['event_eval_dashboard_language'] = CRM_Evalformdashboard_Event::getLanguage($row['event_eval_dashboard_title']);
+
+      foreach ($optionalColumns as $optionalColumn) {
+        if (array_key_exists("event_eval_dashboard_$optionalColumn", $row)) {
+          $rows[$rowNum]["event_eval_dashboard_$optionalColumn"] = $participantEventEval->$optionalColumn;
+        }
+      }
     }
   }
 
