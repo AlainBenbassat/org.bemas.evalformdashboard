@@ -159,28 +159,6 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
     return $filters;
   }
 
-  private function getEventDashboardGroupBys() {
-    $groupBys = [
-      'event_id' => [
-        'dbAlias' => 'e.id',
-      ],
-      'start_date' => [
-        'dbAlias' => 'e.start_date',
-      ],
-      'event_type' => [
-        'dbAlias' => 'et.label',
-      ],
-      'title' => [
-        'dbAlias' => 'e.title',
-      ],
-      'duration' => [
-        'dbAlias' => 'ed.bemas_event_num_days',
-      ],
-    ];
-
-    return $groupBys;
-  }
-
   public function from() {
     $this->_from = "
       FROM
