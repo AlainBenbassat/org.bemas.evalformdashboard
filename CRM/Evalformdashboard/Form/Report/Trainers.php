@@ -44,7 +44,7 @@ class CRM_Evalformdashboard_Form_Report_Trainers extends CRM_Report_Form {
       'events' => [
         'title' => E::ts('Events'),
         'required' => TRUE,
-        'dbAlias' => "group_concat(concat(e.id, '~~~', e.title) SEPARATOR '###')",
+        'dbAlias' => "group_concat(distinct concat(e.id, '~~~', e.title) SEPARATOR '###')",
       ],
     ];
 
@@ -93,7 +93,7 @@ class CRM_Evalformdashboard_Form_Report_Trainers extends CRM_Report_Form {
       INNER JOIN
         civicrm_contact c on c.id = p.contact_id
       LEFT OUTER JOIN
-        civicrm_bemas_eval_participant_trainer ept ON ept.contact_id = c.id
+        civicrm_bemas_eval_participant_trainer ept ON ept.event_id = e.id and c.id = ept.contact_id
     ";
   }
 
