@@ -42,7 +42,7 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
         'dbAlias' => 'e.title',
       ],
       'duration' => [
-        'title' => E::ts('Duration (hours)'),
+        'title' => 'Aantal lesuren',
         'required' => TRUE,
         'dbAlias' => 'ed.aantal_uren_157',
       ],
