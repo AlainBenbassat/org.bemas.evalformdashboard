@@ -16,7 +16,7 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
       $this->assign('eventTitle', $event->title);
       $this->assign('eventStartDate', $event->start_date);
       $this->assign('eventLanguage', $event->language);
-      $this->assign('eventNumDays', $event->num_days);
+      $this->assign('eventNumHours', $event->num_hours);
       $this->assign('eventThemes', $event->themes);
       $this->assign('eventNumParticipants', $event->num_participants);
       $this->assign('eventNumEvaluations', $event->num_evaluations);

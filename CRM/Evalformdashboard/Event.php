@@ -7,7 +7,7 @@ class CRM_Evalformdashboard_Event {
         e.title,
         e.start_date,
         e1.thema_132 theme_ids,
-        e2.bemas_event_num_days num_days
+        e2.aantal_uren_157 num_hours
       from
         civicrm_event e
       left outer join

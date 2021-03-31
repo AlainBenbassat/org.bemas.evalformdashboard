@@ -13,8 +13,8 @@
     <td>{$eventLanguage}</td>
   </tr>
   <tr>
-    <td>Aantal dagen</td>
-    <td>{$eventNumDays}</td>
+    <td>Aantal lesuren</td>
+    <td>{$eventNumHours}</td>
   </tr>
   <tr>
     <td>Thema's</td>

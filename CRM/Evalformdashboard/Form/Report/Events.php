@@ -42,9 +42,9 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
         'dbAlias' => 'e.title',
       ],
       'duration' => [
-        'title' => E::ts('Duration'),
+        'title' => E::ts('Duration (hours)'),
         'required' => TRUE,
-        'dbAlias' => 'ed.bemas_event_num_days',
+        'dbAlias' => 'ed.aantal_uren_157',
       ],
       'language' => [
         'title' => E::ts('Language'),
@@ -173,7 +173,7 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
   }
 
   public function groupBy() {
-    $this->_groupBy = 'GROUP BY e.id, e.start_date, et.label, e.title, ed.bemas_event_num_days';
+    $this->_groupBy = 'GROUP BY e.id, e.start_date, et.label, e.title, ed.aantal_uren_157';
   }
 
   public function orderBy() {
