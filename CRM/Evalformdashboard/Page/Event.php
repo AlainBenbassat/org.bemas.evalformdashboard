@@ -7,11 +7,14 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
     try {
       CRM_Utils_System::setTitle(E::ts('Evaluatie evenement'));
 
-      $eventId = $this->getQueryStringParameter('event_id', 'Integer');
+      $eventId = $this->getQueryStringParameter('event_id', 'Integer', TRUE);
+      $moduleFilter = $this->getQueryStringParameter('module', 'String', FALSE);
       $event = CRM_Evalformdashboard_Event::get($eventId);
       $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($eventId);
       $participantTrainerEval = CRM_Evalformdashboard_Participant::getTrainerEval($eventId);
       $trainerEventEval = CRM_Evalformdashboard_Trainer::getEventEval($eventId);
+
+      $modules = $this->getModules($eventId, $moduleFilter);
 
       $this->assign('eventTitle', $event->title);
       $this->assign('eventStartDate', $event->start_date);
@@ -23,6 +26,10 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
       $this->assign('eventNumResponseRate', $event->response_rate);
       $this->assign('eventParticipantResponseLink', $event->response_participant_link);
       $this->assign('eventTrainerResponseLink', $event->response_trainer_link);
+
+      if ($modules) {
+        $this->assign('modules', $modules);
+      }
 
       if ($participantEventEval !== FALSE) {
         $this->assign('partEventEvalAlgemeneTevredenheid', $participantEventEval->algemene_tevredenheid);
@@ -49,8 +56,50 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
     parent::run();
   }
 
-  private function getQueryStringParameter($name, $type) {
-    $v = CRM_Utils_Request::retrieve($name, $type, $this, TRUE);
+  private function getQueryStringParameter($name, $type, $abort) {
+    $v = CRM_Utils_Request::retrieve($name, $type, $this, $abort);
     return $v;
+  }
+
+  private function getModules($eventId, $moduleFilter) {
+    $modules = [];
+    $sql = "select distinct module from civicrm_bemas_eval_participant_event where event_id = $eventId order by 1";
+    $dao = CRM_Core_DAO::executeQuery($sql);
+    while ($dao->fetch()) {
+      $modules[] = $dao->module;
+    }
+
+    return $this->convertModulesToHyperlinks($eventId, $modules, $moduleFilter);
+  }
+
+  private function convertModulesToHyperlinks($eventId, $modules, $moduleFilter) {
+    $links = '';
+    $clearFilter = '';
+    $decodedModuleFilter = urldecode($moduleFilter);
+
+    foreach ($modules as $module) {
+      if ($links) {
+        $links .= ' | ';
+      }
+
+      if ($decodedModuleFilter == $module) {
+        $links .= $module;
+
+        $queryString = "reset=1&event_id=$eventId";
+        $url = CRM_Utils_System::url('civicrm/evalform-dashboard-event', $queryString);
+        $clearFilter = " | <a href=\"$url\">(wis module filter)</a>";
+      }
+      else {
+        $queryString = "reset=1&event_id=$eventId&module=" . urlencode($module);
+        $url = CRM_Utils_System::url('civicrm/evalform-dashboard-event', $queryString);
+        $links .= "<a href=\"$url\">$module</a>";
+      }
+    }
+
+    if ($clearFilter) {
+      $links .= $clearFilter;
+    }
+
+    return $links;
   }
 }

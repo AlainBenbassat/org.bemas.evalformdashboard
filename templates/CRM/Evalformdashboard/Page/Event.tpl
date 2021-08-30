@@ -16,6 +16,12 @@
     <td>Aantal lesuren</td>
     <td>{$eventNumHours}</td>
   </tr>
+  {if $modules}
+    <tr>
+      <td>Modules</td>
+      <td>{$modules}</td>
+    </tr>
+  {/if}
   <tr>
     <td>Thema's</td>
     <td>{$eventThemes}</td>
