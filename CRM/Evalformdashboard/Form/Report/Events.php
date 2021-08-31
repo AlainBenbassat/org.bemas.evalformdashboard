@@ -186,14 +186,14 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
     ];
 
     foreach ($rows as $rowNum => $row) {
-      $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($row['event_eval_dashboard_event_id']);
+      $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($row['event_eval_dashboard_event_id'], '');
 
       if ($row['event_eval_dashboard_algemene_tevredenheid']) {
         $rows[$rowNum]['event_eval_dashboard_algemene_tevredenheid'] = $this->getUrlToEvaluationDetails($row['event_eval_dashboard_algemene_tevredenheid'], $row['event_eval_dashboard_event_id']);
       }
 
       $rows[$rowNum]['event_eval_dashboard_num_participants'] = CRM_Evalformdashboard_Event::getNumParticipants($row['event_eval_dashboard_event_id']);
-      $rows[$rowNum]['event_eval_dashboard_num_evaluations'] = CRM_Evalformdashboard_Event::getNumEvaluations($row['event_eval_dashboard_event_id']);
+      $rows[$rowNum]['event_eval_dashboard_num_evaluations'] = CRM_Evalformdashboard_Event::getNumEvaluations($row['event_eval_dashboard_event_id'], '');
       $rows[$rowNum]['event_eval_dashboard_language'] = CRM_Evalformdashboard_Event::getLanguage($row['event_eval_dashboard_title']);
 
       foreach ($optionalColumns as $optionalColumn) {
