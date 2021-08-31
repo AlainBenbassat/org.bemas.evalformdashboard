@@ -71,7 +71,9 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
     $sql = "select distinct module from civicrm_bemas_eval_participant_event where event_id = $eventId order by 1";
     $dao = CRM_Core_DAO::executeQuery($sql);
     while ($dao->fetch()) {
-      $modules[] = $dao->module;
+      if ($dao->module) {
+        $modules[] = $dao->module;
+      }
     }
 
     if (count($modules)) {
