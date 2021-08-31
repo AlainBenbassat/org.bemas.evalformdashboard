@@ -74,7 +74,12 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
       $modules[] = $dao->module;
     }
 
-    return $this->convertModulesToHyperlinks($eventId, $modules, $moduleFilter);
+    if (count($modules)) {
+      return $this->convertModulesToHyperlinks($eventId, $modules, $moduleFilter);
+    }
+    else {
+      return [];
+    }
   }
 
   private function convertModulesToHyperlinks($eventId, $modules, $moduleFilter) {
