@@ -1,7 +1,7 @@
 <?php
 
 class CRM_Evalformdashboard_Trainer {
-  public static function getEventEval($eventId) {
+  public static function getEventEval($eventId, $moduleFilter) {
     $columns = [
       'algemene_tevredenheid',
       'ontvangst',
@@ -17,6 +17,11 @@ class CRM_Evalformdashboard_Trainer {
       $stats .= "round(sum($column) / count($column)) $column,";
     }
 
+    $whereModule = '';
+    if ($moduleFilter) {
+      $whereModule = ' and module = %2';
+    }
+
     $sql = "
       select
         $stats
@@ -25,10 +30,15 @@ class CRM_Evalformdashboard_Trainer {
         civicrm_bemas_eval_trainer_event
       where
         event_id = %1
+        $whereModule
     ";
     $sqlParams = [
       1 => [$eventId, 'Integer']
     ];
+
+    if ($moduleFilter) {
+      $sqlParams[2] = [$moduleFilter, 'String'];
+    }
 
     $eventEval = CRM_Core_DAO::executeQuery($sql, $sqlParams);
     $rows = [];

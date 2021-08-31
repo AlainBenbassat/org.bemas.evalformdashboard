@@ -1,7 +1,7 @@
 <?php
 
 class CRM_Evalformdashboard_Participant {
-  public static function getEventEval($eventId) {
+  public static function getEventEval($eventId, $moduleFilter) {
     $columns = [
       'algemene_tevredenheid',
       'invulling',
@@ -22,6 +22,11 @@ class CRM_Evalformdashboard_Participant {
       $stats .= "round(sum($column) / count($column)) $column,";
     }
 
+    $whereModule = '';
+    if ($moduleFilter) {
+      $whereModule = ' and module = %2';
+    }
+
     $sql = "
       select
         $stats
@@ -30,10 +35,15 @@ class CRM_Evalformdashboard_Participant {
         civicrm_bemas_eval_participant_event
       where
         event_id = %1
+        $whereModule
     ";
     $sqlParams = [
       1 => [$eventId, 'Integer']
     ];
+
+    if ($moduleFilter) {
+      $sqlParams[2] = [$moduleFilter, 'String'];
+    }
 
     $eventEval = CRM_Core_DAO::executeQuery($sql, $sqlParams);
     $eventEval->fetch();
@@ -41,7 +51,7 @@ class CRM_Evalformdashboard_Participant {
     return $eventEval;
   }
 
-  public static function getTrainerEval($eventId) {
+  public static function getTrainerEval($eventId, $moduleFilter) {
     $columns = [
       'expertise',
       'didactische_vaardigheden',
@@ -50,6 +60,11 @@ class CRM_Evalformdashboard_Participant {
     $stats = '';
     foreach ($columns as $column) {
       $stats .= "round(sum(e.$column) / count(e.$column)) $column,";
+    }
+
+    $whereModule = '';
+    if ($moduleFilter) {
+      $whereModule = ' and module = %2';
     }
 
     $sql = "
@@ -63,6 +78,7 @@ class CRM_Evalformdashboard_Participant {
         civicrm_contact c on c.id = e.contact_id
       where
         e.event_id = %1
+        $whereModule
       group by
         e.contact_id
         , concat(c.first_name, ' ', c.last_name)
@@ -72,6 +88,10 @@ class CRM_Evalformdashboard_Participant {
     $sqlParams = [
       1 => [$eventId, 'Integer']
     ];
+
+    if ($moduleFilter) {
+      $sqlParams[2] = [$moduleFilter, 'String'];
+    }
 
     $eventEval = CRM_Core_DAO::executeQuery($sql, $sqlParams);
     $rows = [];

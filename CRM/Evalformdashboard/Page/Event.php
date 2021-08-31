@@ -8,11 +8,11 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
       CRM_Utils_System::setTitle(E::ts('Evaluatie evenement'));
 
       $eventId = $this->getQueryStringParameter('event_id', 'Integer', TRUE);
-      $moduleFilter = $this->getQueryStringParameter('module', 'String', FALSE);
+      $moduleFilter = $this->getModuleFilterFromQueryString();
       $event = CRM_Evalformdashboard_Event::get($eventId);
-      $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($eventId);
-      $participantTrainerEval = CRM_Evalformdashboard_Participant::getTrainerEval($eventId);
-      $trainerEventEval = CRM_Evalformdashboard_Trainer::getEventEval($eventId);
+      $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($eventId, $moduleFilter);
+      $participantTrainerEval = CRM_Evalformdashboard_Participant::getTrainerEval($eventId, $moduleFilter);
+      $trainerEventEval = CRM_Evalformdashboard_Trainer::getEventEval($eventId, $moduleFilter);
 
       $modules = $this->getModules($eventId, $moduleFilter);
 
@@ -61,6 +61,11 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
     return $v;
   }
 
+  private function getModuleFilterFromQueryString() {
+    $moduleFilter = $this->getQueryStringParameter('module', 'String', FALSE);
+    return urldecode($moduleFilter);
+  }
+
   private function getModules($eventId, $moduleFilter) {
     $modules = [];
     $sql = "select distinct module from civicrm_bemas_eval_participant_event where event_id = $eventId order by 1";
@@ -75,19 +80,18 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
   private function convertModulesToHyperlinks($eventId, $modules, $moduleFilter) {
     $links = '';
     $clearFilter = '';
-    $decodedModuleFilter = urldecode($moduleFilter);
 
     foreach ($modules as $module) {
       if ($links) {
         $links .= ' | ';
       }
 
-      if ($decodedModuleFilter == $module) {
+      if ($moduleFilter == $module) {
         $links .= $module;
 
         $queryString = "reset=1&event_id=$eventId";
         $url = CRM_Utils_System::url('civicrm/evalform-dashboard-event', $queryString);
-        $clearFilter = " | <a href=\"$url\">(wis module filter)</a>";
+        $clearFilter = " -- <a href=\"$url\">(wis module filter)</a>";
       }
       else {
         $queryString = "reset=1&event_id=$eventId&module=" . urlencode($module);
