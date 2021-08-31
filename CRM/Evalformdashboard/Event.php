@@ -1,7 +1,7 @@
 <?php
 
 class CRM_Evalformdashboard_Event {
-  public static function get($eventId) {
+  public static function get($eventId, $moduleFilter) {
     $sql = "
       select
         e.title,
@@ -26,9 +26,8 @@ class CRM_Evalformdashboard_Event {
     $event->themes = self::getThemes($event->theme_ids);
     $event->language = self::getLanguage($event->title);
     $event->num_participants = self::getNumParticipants($eventId);
-    $event->num_evaluations = self::getNumEvaluations($eventId);
+    $event->num_evaluations = self::getNumEvaluations($eventId, $moduleFilter);
     $event->response_rate = self::calcResponseRate($event->num_participants, $event->num_evaluations);
-    $event->num_evaluations = self::getNumEvaluations($eventId);
     $event->response_participant_link = self::getResponseLink($eventId, 'participant');
     $event->response_trainer_link = self::getResponseLink($eventId, 'trainer');
 
@@ -82,9 +81,30 @@ class CRM_Evalformdashboard_Event {
     return CRM_Core_DAO::singleValueQuery($sql);
   }
 
-  public static function getNumEvaluations($eventId) {
-    $sql = "select count(*) from civicrm_bemas_eval_participant_event where event_id = $eventId";
-    return CRM_Core_DAO::singleValueQuery($sql);
+  public static function getNumEvaluations($eventId, $moduleFilter) {
+    $whereModule = '';
+    if ($moduleFilter) {
+      $whereModule = ' and module = %2';
+    }
+
+    $sql = "
+      select
+        count(*)
+      from
+        civicrm_bemas_eval_participant_event
+      where
+        event_id = %1
+        $whereModule
+    ";
+    $sqlParams = [
+      1 => [$eventId, 'Integer']
+    ];
+
+    if ($moduleFilter) {
+      $sqlParams[2] = [$moduleFilter, 'String'];
+    }
+
+    return CRM_Core_DAO::singleValueQuery($sql, $sqlParams);
   }
 
   private static function calcResponseRate($numParticipants, $numEvaluations) {

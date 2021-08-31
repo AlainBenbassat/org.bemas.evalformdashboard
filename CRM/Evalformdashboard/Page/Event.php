@@ -9,7 +9,7 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
 
       $eventId = $this->getQueryStringParameter('event_id', 'Integer', TRUE);
       $moduleFilter = $this->getModuleFilterFromQueryString();
-      $event = CRM_Evalformdashboard_Event::get($eventId);
+      $event = CRM_Evalformdashboard_Event::get($eventId, $moduleFilter);
       $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($eventId, $moduleFilter);
       $participantTrainerEval = CRM_Evalformdashboard_Participant::getTrainerEval($eventId, $moduleFilter);
       $trainerEventEval = CRM_Evalformdashboard_Trainer::getEventEval($eventId, $moduleFilter);
