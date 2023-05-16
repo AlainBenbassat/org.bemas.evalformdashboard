@@ -31,10 +31,10 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
         'required' => TRUE,
         'dbAlias' => "c.organization_name",
       ],
-      'postal_code' => [
-        'title' => E::ts('Postal Code'),
+      'city' => [
+        'title' => E::ts('City'),
         'required' => TRUE,
-        'dbAlias' => "a.postal_code",
+        'dbAlias' => "a.city",
       ],
       'annulatievoorwaarden' => [
         'title' => 'Annulatievoorwaarden',
@@ -44,7 +44,7 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
       'contactpersoon' => [
         'title' => 'Contactpersoon',
         'required' => TRUE,
-        'dbAlias' => "concat(cp.first_name, ' ', cp.last_name)",
+        'dbAlias' => "concat(cp.first_name, ' ', cp.last_name, ' (', cpe.email, ' - ', cpp.phone, ')')",
       ],
       'ontvangst' => [
         'title' => 'Ontvangst',
@@ -118,6 +118,10 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
         civicrm_value_locatie_infor_46 cli on cli.entity_id = c.id
       LEFT OUTER JOIN
         civicrm_contact cp on cp.id = cli.vaste_contactpersoon_199
+      LEFT OUTER JOIN
+        civicrm_email cpe on cpe.contact_id = cp.id and cpe.is_primary = 1
+      LEFT OUTER JOIN
+        civicrm_phone cpp on cpp.contact_id = cp.id and cpp.is_primary = 1
       LEFT OUTER JOIN
         civicrm_bemas_eval_participant_event epe ON epe.event_id = e.id
     ";
