@@ -6,12 +6,12 @@ class CRM_Evalformdashboard_Event {
       select
         e.title,
         e.start_date,
-        e1.thema_132 theme_ids,
+        e1.thema_208 theme_ids,
         e2.aantal_uren_157 num_hours
       from
         civicrm_event e
       left outer join
-        civicrm_value_opleiding_lesduur_23 e1 on e1.entity_id = e.id
+        civicrm_value_thema_48 e1 on e1.entity_id = e.id
       left outer join
         civicrm_value_activiteit_status_25 e2 on e2.entity_id = e.id
       where
