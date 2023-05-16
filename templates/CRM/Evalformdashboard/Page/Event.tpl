@@ -82,7 +82,7 @@
   </tr>
 </table>
 
-<h3>3. Feedback deelnemers</h3>
+<h3>3. Deelnemers: feedback</h3>
 <ul>
     {foreach from=$partSubmissions key=question item=answerArr}
       <li>
