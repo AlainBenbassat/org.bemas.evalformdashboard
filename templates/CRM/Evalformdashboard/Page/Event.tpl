@@ -83,18 +83,15 @@
 </table>
 
 <h3>3. Deelnemers: feedback</h3>
-<ul>
-    {foreach from=$partSubmissions key=question item=answerArr}
-      <li>
-        {$question}
-        <ul>
-          {foreach from=$answerArr key=submissionId item=answer}
-            <li>{$answer}</li>
-          {/foreach}
-        </ul>
-      </li>
-    {/foreach}
-</ul>
+
+{foreach from=$partSubmissions key=question item=answerArr}
+  <p><strong>{$question}:</strong></p>
+    <ul>
+      {foreach from=$answerArr key=submissionId item=answer}
+        <li>{$answer}</li>
+      {/foreach}
+    </ul>
+{/foreach}
 
 <h3>4. Deelnemers: evaluatie lesgever(s)</h3>
 <table id="options" class="display">
