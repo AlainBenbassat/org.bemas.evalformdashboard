@@ -137,8 +137,14 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
 
   public function alterDisplay(&$rows) {
     foreach ($rows as $rowNum => $row) {
+      $rows[$rowNum]['event_eval_dashboard_contact_id'] = $this->getUrlToContactDetails($row['event_eval_dashboard_contact_id']);
       $rows[$rowNum]['event_eval_dashboard_events'] = $this->getUrlToEvaluationDetails($row['event_eval_dashboard_events']);
     }
+  }
+
+  private function getUrlToContactDetails($contactId) {
+    $url = CRM_Utils_System::url('civicrm/contact/view', 'reset=1&cid=' . $contactId);
+    return '<a href="' . $url . '">' . $contactId . '</a>';
   }
 
   private function getUrlToEvaluationDetails($stringedEvents) {
