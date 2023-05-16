@@ -103,7 +103,7 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
   }
 
   public function groupBy() {
-    $this->_groupBy = "GROUP BY l.entity_id";
+    $this->_groupBy = "GROUP BY c.id";
   }
 
   public function orderBy() {
