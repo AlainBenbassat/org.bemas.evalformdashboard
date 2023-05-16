@@ -11,6 +11,7 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
       $moduleFilter = $this->getModuleFilterFromQueryString();
       $event = CRM_Evalformdashboard_Event::get($eventId, $moduleFilter);
       $participantEventEval = CRM_Evalformdashboard_Participant::getEventEval($eventId, $moduleFilter);
+      $participantSubmissions = CRM_Evalformdashboard_Submission::getOpenAnswers($eventId, $moduleFilter);
       $participantTrainerEval = CRM_Evalformdashboard_Participant::getTrainerEval($eventId, $moduleFilter);
       $trainerEventEval = CRM_Evalformdashboard_Trainer::getEventEval($eventId, $moduleFilter);
 
@@ -44,6 +45,8 @@ class CRM_Evalformdashboard_Page_Event extends CRM_Core_Page {
         $this->assign('partEventEvalOntvangst', $participantEventEval->ontvangst);
         $this->assign('partEventEvalCatering', $participantEventEval->catering);
         $this->assign('partEventEvalLocatie', $participantEventEval->locatie);
+
+        $this->assign('partSubmissions', $participantSubmissions);
       }
 
       $this->assign('partTrainerEval', $participantTrainerEval);

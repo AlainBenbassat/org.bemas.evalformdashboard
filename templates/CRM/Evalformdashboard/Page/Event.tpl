@@ -82,7 +82,21 @@
   </tr>
 </table>
 
-<h3>3. Deelnemers: evaluatie lesgever(s)</h3>
+<h3>3. Feedback deelnemers</h3>
+<ul>
+    {foreach from=$partSubmissions key=question item=answerArr}
+      <li>
+        {$question}
+        <ul>
+          {foreach from=$answerArr key=submissionId item=answer}
+            <li>{$answer}</li>
+          {/foreach}
+        </ul>
+      </li>
+    {/foreach}
+</ul>
+
+<h3>4. Deelnemers: evaluatie lesgever(s)</h3>
 <table id="options" class="display">
   <thead>
     <tr>
@@ -100,7 +114,7 @@
   {/foreach}
 </table>
 
-<h3>4. Lesgever(s): evaluatie evenement</h3>
+<h3>5. Lesgever(s): evaluatie evenement</h3>
 <table id="options" class="display">
   <thead>
     <tr>
