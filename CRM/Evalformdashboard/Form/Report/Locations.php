@@ -34,17 +34,17 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
       'ontvangst' => [
         'title' => 'Ontvangst',
         'required' => TRUE,
-        'dbAlias' => 'round(sum(ept.ontvangst) / count(ept.ontvangst))',
+        'dbAlias' => 'round(sum(epe.ontvangst) / count(epe.ontvangst))',
       ],
       'catering' => [
         'title' => 'Catering',
         'required' => TRUE,
-        'dbAlias' => 'round(sum(ept.catering) / count(ept.catering))',
+        'dbAlias' => 'round(sum(epe.catering) / count(epe.catering))',
       ],
       'locatie' => [
         'title' => 'Locatie',
         'required' => TRUE,
-        'dbAlias' => 'round(sum(ept.locatie) / count(ept.locatie))',
+        'dbAlias' => 'round(sum(epe.locatie) / count(epe.locatie))',
       ],
       'events' => [
         'title' => E::ts('Events'),
@@ -97,6 +97,8 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
         civicrm_value_opleiding_lesduur_23 l ON l.entity_id = e.id
       INNER JOIN
         civicrm_contact c on c.id = l.eventlocatie_195
+      LEFT OUTER JOIN
+        civicrm_bemas_eval_participant_event epe ON epe.event_id = e.id
     ";
   }
 
