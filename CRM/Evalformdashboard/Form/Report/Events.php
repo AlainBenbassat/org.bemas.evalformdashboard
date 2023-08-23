@@ -67,7 +67,7 @@ class CRM_Evalformdashboard_Form_Report_Events extends CRM_Report_Form {
         'dbAlias' => 'round(sum(epe.algemene_tevredenheid) / count(epe.algemene_tevredenheid))',
       ],
       'invulling' => [
-        'title' => 'Invulling',
+        'title' => 'Inhoudelijke invulling',
         'required' => FALSE,
         'dbAlias' => 'NULL',
       ],

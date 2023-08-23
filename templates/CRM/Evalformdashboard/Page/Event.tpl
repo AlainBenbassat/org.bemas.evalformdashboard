@@ -53,7 +53,7 @@
   <thead>
   <tr>
     <th>Algemene tevredenheid</th>
-    <th>Invulling</th>
+    <th>Inhoudelijke invulling</th>
     <th>Cursusmateriaal</th>
     <th>Interactie</th>
     <th>Kwaliteit</th>
