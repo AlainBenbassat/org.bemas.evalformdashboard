@@ -1,3 +1,4 @@
+{crmScope extensionKey='org.bemas.evalformdashboard'}
 <h3>{ts}1. Evenement details{/ts}</h3>
 <table id="options" class="display">
   <tr>
@@ -136,3 +137,4 @@
     </tr>
   {/foreach}
 </table>
+{/crmScope}

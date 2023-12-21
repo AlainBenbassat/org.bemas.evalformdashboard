@@ -144,7 +144,7 @@ msgstr "1. Détails de l'événement"
 
 #: ./templates/CRM/Evalformdashboard/Page/Event.tpl
 msgid "Titel"
-msgstr "titre"
+msgstr "Titre"
 
 #: ./templates/CRM/Evalformdashboard/Page/Event.tpl
 msgid "Begindatum"
