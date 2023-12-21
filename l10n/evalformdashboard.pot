@@ -1,0 +1,204 @@
+#: ./CRM/Evalformdashboard/Form/Report/Events.php
+msgid "Event Evaluation Dashboard"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php
+msgid "Event Id"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./CRM/Evalformdashboard/Form/Report/Locations.php ./CRM/Evalformdashboard/Form/Report/Trainers.php
+msgid "Start Date"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php
+msgid "Event Type"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php
+msgid "Event"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Aantal lesuren"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php
+msgid "Language"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php
+msgid "#Deelnemers"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php
+msgid "#Evaluaties"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Algemene tevredenheid"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Inhoudelijke invulling"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Cursusmateriaal"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Interactie"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Kwaliteit"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Bijgeleerd"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Verwachting"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Relevantie"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Administratief proces"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./CRM/Evalformdashboard/Form/Report/Locations.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Ontvangst"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./CRM/Evalformdashboard/Form/Report/Locations.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Catering"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./CRM/Evalformdashboard/Form/Report/Locations.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Locatie"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./CRM/Evalformdashboard/Form/Report/Locations.php ./CRM/Evalformdashboard/Form/Report/Trainers.php
+msgid "Event Types"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Events.php ./CRM/Evalformdashboard/Form/Report/Locations.php ./CRM/Evalformdashboard/Form/Report/Trainers.php
+msgid "Active?"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Locations.php
+msgid "Locations Evaluation Dashboard"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Locations.php ./CRM/Evalformdashboard/Form/Report/Trainers.php
+msgid "Contact Id"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Locations.php
+msgid "Location"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Locations.php
+msgid "City"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Locations.php
+msgid "Annulatievoorwaarden"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Locations.php
+msgid "Contactpersoon"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Locations.php ./CRM/Evalformdashboard/Form/Report/Trainers.php
+msgid "Events"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Trainers.php
+msgid "Trainer Evaluation Dashboard"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Trainers.php
+msgid "Name"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Trainers.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Expertise"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Form/Report/Trainers.php ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Didactische vaardigheden"
+msgstr ""
+
+#: ./CRM/Evalformdashboard/Page/Event.php
+msgid "Evaluatie evenement"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "1. Evenement details"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Titel"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Begindatum"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Taal"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Modules"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Thema's"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Aantal deelnemers"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Aantal evaluaties"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Response rate"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Link naar antwoorden deelnemers"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Link naar antwoorden lesgevers"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "2. Deelnemers: evaluatie evenement"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "3. Deelnemers: feedback"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "4. Deelnemers: evaluatie lesgever(s)"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "Lesgever"
+msgstr ""
+
+#: ./templates/CRM/Evalformdashboard/Page/Event.tpl
+msgid "5. Lesgever(s): evaluatie evenement"
+msgstr ""
+
