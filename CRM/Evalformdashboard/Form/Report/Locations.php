@@ -37,27 +37,27 @@ class CRM_Evalformdashboard_Form_Report_Locations extends CRM_Report_Form {
         'dbAlias' => "a.city",
       ],
       'annulatievoorwaarden' => [
-        'title' => 'Annulatievoorwaarden',
+        'title' => E::ts('Annulatievoorwaarden'),
         'required' => TRUE,
         'dbAlias' => "cli.annulatievoorwaarden_198",
       ],
       'contactpersoon' => [
-        'title' => 'Contactpersoon',
+        'title' => E::ts('Contactpersoon'),
         'required' => TRUE,
         'dbAlias' => "concat(cp.first_name, ' ', cp.last_name, ' (', cpe.email, ' - ', cpp.phone, ')')",
       ],
       'ontvangst' => [
-        'title' => 'Ontvangst',
+        'title' => E::ts('Ontvangst'),
         'required' => TRUE,
         'dbAlias' => 'round(sum(epe.ontvangst) / count(epe.ontvangst))',
       ],
       'catering' => [
-        'title' => 'Catering',
+        'title' => E::ts('Catering'),
         'required' => TRUE,
         'dbAlias' => 'round(sum(epe.catering) / count(epe.catering))',
       ],
       'locatie' => [
-        'title' => 'Locatie',
+        'title' => E::ts('Locatie'),
         'required' => TRUE,
         'dbAlias' => 'round(sum(epe.locatie) / count(epe.locatie))',
       ],

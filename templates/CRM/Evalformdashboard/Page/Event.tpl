@@ -1,69 +1,69 @@
-<h3>1. Evenement details</h3>
+<h3>{ts}1. Evenement details{/ts}</h3>
 <table id="options" class="display">
   <tr>
-    <td>Titel</td>
+    <td>{ts}Titel{/ts}</td>
     <td>{$eventTitle}</td>
   </tr>
   <tr>
-    <td>Begindatum</td>
+    <td>{ts}Begindatum{/ts}</td>
     <td>{$eventStartDate}</td>
   </tr>
   <tr>
-    <td>Taal</td>
+    <td>{ts}Taal{/ts}</td>
     <td>{$eventLanguage}</td>
   </tr>
   <tr>
-    <td>Aantal lesuren</td>
+    <td>{ts}Aantal lesuren{/ts}</td>
     <td>{$eventNumHours}</td>
   </tr>
   {if $modules}
     <tr>
-      <td>Modules</td>
+      <td>{ts}Modules{/ts}</td>
       <td>{$modules}</td>
     </tr>
   {/if}
   <tr>
-    <td>Thema's</td>
+    <td>{ts}Thema's{/ts}</td>
     <td>{$eventThemes}</td>
   </tr>
   <tr>
-    <td>Aantal deelnemers</td>
+    <td>{ts}Aantal deelnemers{/ts}</td>
     <td>{$eventNumParticipants}</td>
   </tr>
   <tr>
-    <td>Aantal evaluaties</td>
+    <td>{ts}Aantal evaluaties{/ts}</td>
     <td>{$eventNumEvaluations}</td>
   </tr>
   <tr>
-    <td>Response rate</td>
+    <td>{ts}Response rate{/ts}</td>
     <td>{$eventNumResponseRate}</td>
   </tr>
   <tr>
-    <td>Link naar antwoorden deelnemers</td>
+    <td>{ts}Link naar antwoorden deelnemers{/ts}</td>
     <td>{$eventParticipantResponseLink}</td>
   </tr>
   <tr>
-    <td>Link naar antwoorden lesgevers</td>
+    <td>{ts}Link naar antwoorden lesgevers{/ts}</td>
     <td>{$eventTrainerResponseLink}</td>
   </tr>
 </table>
 
-<h3>2. Deelnemers: evaluatie evenement</h3>
+<h3>{ts}2. Deelnemers: evaluatie evenement{/ts}</h3>
 <table id="options" class="display">
   <thead>
   <tr>
-    <th>Algemene tevredenheid</th>
-    <th>Inhoudelijke invulling</th>
-    <th>Cursusmateriaal</th>
-    <th>Interactie</th>
-    <th>Kwaliteit</th>
-    <th>Bijgeleerd</th>
-    <th>Verwachting</th>
-    <th>Relevantie</th>
-    <th>Administratief proces</th>
-    <th>Ontvangst</th>
-    <th>Catering</th>
-    <th>Locatie</th>
+    <th>{ts}Algemene tevredenheid{/ts}</th>
+    <th>{ts}Inhoudelijke invulling{/ts}</th>
+    <th>{ts}Cursusmateriaal{/ts}</th>
+    <th>{ts}Interactie{/ts}</th>
+    <th>{ts}Kwaliteit{/ts}</th>
+    <th>{ts}Bijgeleerd{/ts}</th>
+    <th>{ts}Verwachting{/ts}</th>
+    <th>{ts}Relevantie{/ts}</th>
+    <th>{ts}Administratief proces{/ts}</th>
+    <th>{ts}Ontvangst{/ts}</th>
+    <th>{ts}Catering{/ts}</th>
+    <th>{ts}Locatie{/ts}</th>
   </tr>
   </thead>
   <tr>
@@ -82,7 +82,7 @@
   </tr>
 </table>
 
-<h3>3. Deelnemers: feedback</h3>
+<h3>{ts}3. Deelnemers: feedback{/ts}</h3>
 
 {foreach from=$partSubmissions key=question item=answerArr}
   <p><strong>{$question}:</strong></p>
@@ -93,13 +93,13 @@
     </ul>
 {/foreach}
 
-<h3>4. Deelnemers: evaluatie lesgever(s)</h3>
+<h3>{ts}4. Deelnemers: evaluatie lesgever(s){/ts}</h3>
 <table id="options" class="display">
   <thead>
     <tr>
-      <th>Lesgever</th>
-      <th>Expertise</th>
-      <th>Didactische vaardigheden</th>
+      <th>{ts}Lesgever{/ts}</th>
+      <th>{ts}Expertise{/ts}</th>
+      <th>{ts}Didactische vaardigheden{/ts}</th>
     </tr>
   </thead>
   {foreach from=$partTrainerEval item=row}
@@ -111,17 +111,17 @@
   {/foreach}
 </table>
 
-<h3>5. Lesgever(s): evaluatie evenement</h3>
+<h3>{ts}5. Lesgever(s): evaluatie evenement{/ts}</h3>
 <table id="options" class="display">
   <thead>
     <tr>
-      <th>Algemene tevredenheid</th>
-      <th>Ontvangst</th>
-      <th>Catering</th>
-      <th>Locatie</th>
-      <th>Cursusmateriaal</th>
-      <th>Interactie</th>
-      <th>Verwachting</th>
+      <th>{ts}Algemene tevredenheid{/ts}</th>
+      <th>{ts}Ontvangst{/ts}</th>
+      <th>{ts}Catering{/ts}</th>
+      <th>{ts}Locatie{/ts}</th>
+      <th>{ts}Cursusmateriaal{/ts}</th>
+      <th>{ts}Interactie{/ts}</th>
+      <th>{ts}Verwachting{/ts}</th>
     </tr>
   </thead>
   {foreach from=$trainerEventEval item=row}

@@ -32,12 +32,12 @@ class CRM_Evalformdashboard_Form_Report_Trainers extends CRM_Report_Form {
         'dbAlias' => "concat(c.first_name, ' ', c.last_name)",
       ],
       'expertise' => [
-        'title' => 'Expertise',
+        'title' => E::ts('Expertise'),
         'required' => TRUE,
         'dbAlias' => 'round(sum(ept.expertise) / count(ept.expertise))',
       ],
       'didactische_vaardigheden' => [
-        'title' => 'Didactische vaardigheden',
+        'title' => E::ts('Didactische vaardigheden'),
         'required' => TRUE,
         'dbAlias' => 'round(sum(ept.didactische_vaardigheden) / count(ept.didactische_vaardigheden))',
       ],
